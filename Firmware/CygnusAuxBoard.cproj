@@ -171,6 +171,9 @@
     <Compile Include="inc\ADC.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="inc\CRC16.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="inc\DigitalSequencer.h">
       <SubType>compile</SubType>
     </Compile>
@@ -199,6 +202,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ADC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\CRC16.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\CygnusAuxBoard.c">

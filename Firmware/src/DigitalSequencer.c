@@ -1,30 +1,43 @@
 /*****************************************************************************/
+/* Digital output sequencer                                                  */
 /*                                                                           */
-/*    Cygnus Aux Board Firmware                                              */
+/* Copyright (C) 2016 Laszlo Arvai                                           */
+/* All rights reserved.                                                      */
 /*                                                                           */
-/*    Copyright (C) 2016 Laszlo Arvai                                        */
+/* This program is free software: you can redistribute it and/or modify      */
+/* it under the terms of the GNU General Public License as published by      */
+/* the Free Software Foundation, either version 3 of the License, or         */
+/* (at your option) any later version.                                       */
 /*                                                                           */
-/*    ------------------------------------------------------------------     */
-/*    Digital output sequencer                                               */
+/* This program is distributed in the hope that it will be useful,           */
+/* but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/* GNU General Public License for more details.                              */
+/*                                                                           */
+/* You should have received a copy of the GNU General Public License         */
+/* along with this program.  If not, see <http://www.gnu.org/licenses/>.     */
 /*****************************************************************************/
 
-///////////////////////////////////////////////////////////////////////////////
-// Includes
+/*****************************************************************************/
+/* Includes                                                                  */
+/*****************************************************************************/
 #include <avr/io.h>
 #include <util/atomic.h>
 #include <Timer.h>
 #include <DigitalSequencer.h>
 #include "IOConfig.h"
 
-///////////////////////////////////////////////////////////////////////////////
-// Module global variables
+/*****************************************************************************/
+/* Module global variables                                                   */
+/*****************************************************************************/
 static uint16_t l_timestamp;
 static uint16_t l_current_delay = 0;
 static uint16_t l_sequence_start_address;
 static uint16_t l_current_sequence_address;
 
-///////////////////////////////////////////////////////////////////////////////
-// Module local functions
+/*****************************************************************************/
+/* Module local functions                                                    */
+/*****************************************************************************/
 static uint16_t DSLoadNextStep(void);
 
 ///////////////////////////////////////////////////////////////////////////////

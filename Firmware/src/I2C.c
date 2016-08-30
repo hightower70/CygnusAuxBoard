@@ -1,15 +1,26 @@
 /*****************************************************************************/
+/* I2C driver                                                                */
 /*                                                                           */
-/*    FlowNavi Firmware                                                      */
+/* Copyright (C) 2016 Laszlo Arvai                                           */
+/* All rights reserved.                                                      */
 /*                                                                           */
-/*    Copyright (C) 2015 Laszlo Arvai                                        */
+/* This program is free software: you can redistribute it and/or modify      */
+/* it under the terms of the GNU General Public License as published by      */
+/* the Free Software Foundation, either version 3 of the License, or         */
+/* (at your option) any later version.                                       */
 /*                                                                           */
-/*    ------------------------------------------------------------------     */
-/*    I2C driver                                                             */
+/* This program is distributed in the hope that it will be useful,           */
+/* but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/* GNU General Public License for more details.                              */
+/*                                                                           */
+/* You should have received a copy of the GNU General Public License         */
+/* along with this program.  If not, see <http://www.gnu.org/licenses/>.     */
 /*****************************************************************************/
 
-///////////////////////////////////////////////////////////////////////////////
-// Includes
+/*****************************************************************************/
+/* Includes                                                                  */
+/*****************************************************************************/
 #include <stdint.h>
 #include <stddef.h>
 #include <avr/io.h>
@@ -19,18 +30,21 @@
 #include <Helpers.h> 
 #include <I2C.h>
 
-///////////////////////////////////////////////////////////////////////////////
-// Constants
+/*****************************************************************************/
+/* Constants                                                                 */
+/*****************************************************************************/
 #define TWCR_DEFAULT (BV(TWEN) | BV(TWIE))
 
 #define ST_BUSY BV(7)
 #define ST_ERROR BV(0)
 
-///////////////////////////////////////////////////////////////////////////////
-// Types
+/*****************************************************************************/
+/* Types                                                                     */
+/*****************************************************************************/
 
-///////////////////////////////////////////////////////////////////////////////
-// Module global variables
+/*****************************************************************************/
+/* Module global variables                                                   */
+/*****************************************************************************/
 static volatile uint8_t l_status;
 static uint8_t l_address;
 static uint8_t* l_write_buffer;

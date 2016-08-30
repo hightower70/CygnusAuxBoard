@@ -1,11 +1,21 @@
 /*****************************************************************************/
+/* I/O Configuration                                                         */
 /*                                                                           */
-/*    FlowNavi Firmware                                                      */
+/* Copyright (C) 2016 Laszlo Arvai                                           */
+/* All rights reserved.                                                      */
 /*                                                                           */
-/*    Copyright (C) 2015 Laszlo Arvai                                        */
+/* This program is free software: you can redistribute it and/or modify      */
+/* it under the terms of the GNU General Public License as published by      */
+/* the Free Software Foundation, either version 3 of the License, or         */
+/* (at your option) any later version.                                       */
 /*                                                                           */
-/*    ------------------------------------------------------------------     */
-/*    I/O Configuration                                                      */
+/* This program is distributed in the hope that it will be useful,           */
+/* but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/* GNU General Public License for more details.                              */
+/*                                                                           */
+/* You should have received a copy of the GNU General Public License         */
+/* along with this program.  If not, see <http://www.gnu.org/licenses/>.     */
 /*****************************************************************************/
 
 #ifndef __IOConfig_h
@@ -19,8 +29,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 // UART Settings
 #define UART_BAUD_RATE 115200
+
 #define UART_TX_BUFFER_LENGTH 128
 #define UART_RX_BUFFER_LENGTH 64
+#define UART_RX_BUFFER_COUNT 2
 
 ///////////////////////////////////////////////////////////////////////////////
 // ADNS3080 definitions
@@ -69,5 +81,10 @@
 #define TRIG_DDR DDRB
 #define TRIG_PIN PORTB1
 #define TRIG_PORT PORTB
+
+///////////////////////////////////////////////////////////////////////////////
+// ADC Settings
+#define ADC_TEMP (_BV(MUX0) | _BV(MUX1) | _BV(MUX2) ) // temp channel selection (mux)
+#define ADC_AIN1 ( _BV(MUX1) | _BV(MUX2) ) // AIN1 channel selection (mux)
 
 #endif 

@@ -1,5 +1,5 @@
 /*****************************************************************************/
-/* SPI bus driver                                                            */
+/* CITT16 CRC calculation routines                                           */
 /*                                                                           */
 /* Copyright (C) 2016 Laszlo Arvai                                           */
 /* All rights reserved.                                                      */
@@ -17,15 +17,23 @@
 /* You should have received a copy of the GNU General Public License         */
 /* along with this program.  If not, see <http://www.gnu.org/licenses/>.     */
 /*****************************************************************************/
+#ifndef __CRC16_h
+#define __CRC16_h
 
-#ifndef __SPI_h
-#define __SPI_h
+/*****************************************************************************/
+/* Includes                                                                  */
+/*****************************************************************************/
+#include <stdint.h>
+
+/*****************************************************************************/
+/* Constants                                                                 */
+/*****************************************************************************/
+#define crc16_INIT_VALUE 0xffff
 
 /*****************************************************************************/
 /* Function prototypes                                                       */
 /*****************************************************************************/
-
-void SPIInit(void);
-uint8_t SPIWriteAndReadData(uint8_t in_data);
+uint16_t crc16Calculate(uint16_t in_crc, uint8_t in_data);
+uint16_t crc16CalculateForBlock(uint16_t in_crc, uint8_t* in_buffer, uint16_t in_buffer_length);
 
 #endif

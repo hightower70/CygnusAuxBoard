@@ -1,11 +1,21 @@
 /*****************************************************************************/
+/* UART Driver using SLIP protocol                                           */
 /*                                                                           */
-/*    Cygnus Aux Board Firmware                                              */
+/* Copyright (C) 2016 Laszlo Arvai                                           */
+/* All rights reserved.                                                      */
 /*                                                                           */
-/*    Copyright (C) 2016 Laszlo Arvai                                        */
+/* This program is free software: you can redistribute it and/or modify      */
+/* it under the terms of the GNU General Public License as published by      */
+/* the Free Software Foundation, either version 3 of the License, or         */
+/* (at your option) any later version.                                       */
 /*                                                                           */
-/*    ------------------------------------------------------------------     */
-/*    UART Driver using SLIP protocol                                        */
+/* This program is distributed in the hope that it will be useful,           */
+/* but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/* GNU General Public License for more details.                              */
+/*                                                                           */
+/* You should have received a copy of the GNU General Public License         */
+/* along with this program.  If not, see <http://www.gnu.org/licenses/>.     */
 /*****************************************************************************/
 
 //////////////////////////////////////////////////////////////////////////////
@@ -23,12 +33,13 @@
 	 
 ///////////////////////////////////////////////////////////////////////////////
 // Module local variables
-uint8_t g_rx_buffer[UART_RX_BUFFER_LENGTH];
-uint8_t g_tx_buffer[UART_TX_BUFFER_LENGTH];
 
+// transmit buffer
+uint8_t g_tx_buffer[UART_TX_BUFFER_LENGTH];
 static volatile uint8_t l_tx_push_index = 0;			// transmission circular buffer
 static volatile uint8_t l_tx_pop_index = 0;
 
+uint8_t g_rx_buffer[UART_RX_BUFFER_LENGTH];
 static volatile uint8_t l_rx_push_index = 0;			// receiver circular buffer
 static volatile uint8_t l_rx_pop_index = 0;
 
@@ -129,6 +140,12 @@ void UARTSendByte(uint8_t in_byte)
 	UARTStartTransmission();
 }
 
+
+/*****************************************************************************/
+/* Receiver section                                                          */
+/*****************************************************************************/
+
+
 ///////////////////////////////////////////////////////////////////////////////
 /// @brief Checks if received character is available
 /// @return True if character pending
@@ -179,6 +196,10 @@ static void UARTStoreReceivedCharacter(uint8_t in_byte)
 	// store new index
 	l_rx_push_index = new_push_index;
 }
+
+/*****************************************************************************/
+/* Low level driver functions                                                */
+/*****************************************************************************/
 
 #ifdef __AVR_ATmega8__
 /*****************************************************************************/
